@@ -45,6 +45,16 @@ allprojects {
         artifacts {
             archives sourcesJar
         }
+        publishing {
+            publications {
+                mavenJava(MavenPublication) {
+                    from components.java
+                }
+            }
+            repositories {
+                mavenLocal()
+            }
+        }
 
         if (project(':').hasProperty('bintrayUser')) {
             def fullName = "$baseName-kotlin-$kotlin_version"
